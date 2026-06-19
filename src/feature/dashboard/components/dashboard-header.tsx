@@ -24,7 +24,7 @@ export function DashboardHeader() {
         </Button>
         <Button variant={"outline"} size={"sm"} asChild>
           <Link href={"mailto:ojhavinay7602@gmail.com"}>
-            <ThumbsUp />
+            <Headphones />
             <span className="hidden lg:block">Need help?</span>
           </Link>
         </Button>
