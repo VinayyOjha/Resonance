@@ -9,7 +9,7 @@ export function PageHeader({
     className,
 }: {
     title: string,
-    className: string;
+    className?: string;
 }){
     return (
         <div className={cn("flex items-center justify-between border-b px-4 py-4", className)}>
@@ -26,7 +26,7 @@ export function PageHeader({
                 </Button>
                 <Button variant={"outline"} size={"sm"} asChild>
                     <Link href={"mailto:ojhavinay7602@gmail.com"}>
-                        <ThumbsUp />
+                        <Headphones />
                         <span className="hidden lg:block">Need help?</span>
                     </Link>
                 </Button>
