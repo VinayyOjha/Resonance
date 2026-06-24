@@ -22,9 +22,9 @@ export function VoiceAvatar({
     const avatarUrl = useVoiceAvatar(seed);
 
     return (
-        <Avatar>
+        <Avatar className={cn("size-4 border-white shadow-xs", className)}>
             <AvatarImage src={avatarUrl} alt={name} />
-            <AvatarFallback className="text-[8px]">
+            <AvatarFallback className="text-[8px] ">
                 {name.slice(0, 2).toUpperCase()}
             </AvatarFallback>
         </Avatar>

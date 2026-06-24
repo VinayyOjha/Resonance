@@ -29,7 +29,8 @@ Example:
 }
  */
 type TTSVoiceItem =
-  inferRouterOutputs<AppRouter>["voices"]["getAll"]["custom"][number];
+  inferRouterOutputs<AppRouter>["voices"]["getAll"]["custom"][number] |
+  inferRouterOutputs<AppRouter>["voices"]["getAll"]["system"][number];
 
 
 // Context type definition
