@@ -10,7 +10,7 @@ export function SettingsPanel(){
         <div className="hidden w-105 min-h-0 flex-col border-l lg:flex">
             <Tabs
                 defaultValue="settings"
-                className="flex h-full min-h-0 flex-col gap-y-8"
+                className="flex h-full min-h-0 flex-col gap-y-0"
             >
                 <TabsList className="w-full bg-transparent rounded-none border-b h-12 group-data-[orientation=horizontal]/tabs:h-12 p-0">
                     <TabsTrigger value="settings" className={tabTriggerClassName}>
