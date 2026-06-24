@@ -85,8 +85,6 @@ export const voicesRouter = createTRPCRouter({
                 });
             }
 
-            await prisma.voice.delete({ where: { id: input.id } });
-
             // Clean up r2
             if (voice.r2ObjectKey) {
                 // In produciton, use background jobs, retries, cron jobs.
@@ -97,6 +95,8 @@ export const voicesRouter = createTRPCRouter({
                     });
                 });
             }
+
+            await prisma.voice.delete({ where: { id: input.id } });
 
             return { success: true };
         })
