@@ -64,10 +64,10 @@ model Generation {
   text String
   voiceName String
   r2ObjectKey String?
-  temperature Float
+  temperature Float @map("temparature")
   topP  Float
   topK Int
-  repetitionPenalty  Float
+  repetitionPenalty Float @map("repitionPenalty")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
