@@ -1,18 +1,8 @@
 import { z } from "zod";
 import { baseProcedure, createTRPCRouter } from "../init";
+import { voicesRouter } from "./voices";
 
 export const appRouter = createTRPCRouter({
-    hello: baseProcedure
-        .input(
-            z.object({
-                text: z.string(),
-            }),
-        )
-        .query((opts) => {
-            return {
-                greeting: `hweello ${opts.input.text}`,
-            };
-        }),
     health: baseProcedure
         .query(async () => {
             return {
@@ -20,6 +10,7 @@ export const appRouter = createTRPCRouter({
                 greetMessage: "Kaise ho?"
             }
         }),
+    voices: voicesRouter,
 });
 
 export type AppRouter = typeof appRouter;
