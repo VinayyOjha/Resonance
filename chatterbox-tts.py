@@ -106,9 +106,9 @@ class Chatterbox:
         )
         web_app.add_middleware(
             CORSMiddleware,
-            allow_origins=["*"],
-            allow_credentials=True,
-            allow_methods=["*"],
+            allow_origins=["http://localhost:3000", ],
+            allow_credentials=False,
+            allow_methods=["POST"],
             allow_headers=["*"],
         )
 
@@ -138,8 +138,8 @@ class Chatterbox:
             except Exception as e:
                 raise HTTPException(
                     status_code=500,
-                    detail=f"Failed to generate audio: {e}",
-                )
+                    detail="Failed to generate audio",
+                ) from e
 
         return web_app
 
@@ -214,11 +214,6 @@ def test(
 # # Return Bytes
 # #      ↓
 # # Save output.wav
-
-# # Use this to add R2 tokens:
-# # modal secret create cloudflare-r2 \
-# #   AWS_ACCESS_KEY_ID=e79bcbb09930916cccbca01305a4a36b \
-# #   AWS_SECRET_ACCESS_KEY=168992177c56dd755d9e719f4af065e8c900e1772f9c592f3a4e5800ccc6fcb6
 
 # # Use this to test locally:
 # # modal run chatterbox_tts.py \
