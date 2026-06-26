@@ -3,7 +3,7 @@
 * Do not edit manually. Run `npm run sync-api` to regenerate.
 *
 * Generated from: https://vinayyojha--chatterbox-tts-chatterbox-serve.modal.run/openapi.json
-* Generated at: 2026-06-25T01:22:38.909Z
+* Generated at: 2026-06-26T14:38:45.018Z
 */
   export interface paths {
     "/generate": {
