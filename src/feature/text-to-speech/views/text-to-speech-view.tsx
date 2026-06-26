@@ -1,15 +1,16 @@
 "use client";
 
+import { useSuspenseQuery } from "@tanstack/react-query";
+
 import { useTRPC } from "@/trpc/client";
 import { SettingsPanel } from "../components/settings-panel";
-import { TextInputPanel } from "../components/text-input-panel";
+import { TextInputPanel } from "../../text-to-speech/components/text-input-panel";
+import { VoicePreviewPlaceholder } from "../components/voice-preview-placeholder";
 import {
   TextToSpeechForm,
   defaultTTSValues,
   type TTSFormValues,
 } from "../components/text-to-speech-form";
-import { VoicePreviewPlaceholder } from "../components/voice-preview-placeholder";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { TTSVoicesProvider } from "../contexts/tts-voices-context";
 
 export function TextToSpeechView({
@@ -18,15 +19,16 @@ export function TextToSpeechView({
   initialValues?: Partial<TTSFormValues>;
 }) {
   const trpc = useTRPC();
-  const { data: voices } = useSuspenseQuery(trpc.voices.getAll.queryOptions());
+  const { 
+    data: voices,
+  } = useSuspenseQuery(trpc.voices.getAll.queryOptions());
 
-  // Destructure voices(or data)
   const { custom: customVoices, system: systemVoices } = voices;
 
   const allVoices = [...customVoices, ...systemVoices];
   const fallbackVoiceId = allVoices[0]?.id ?? "";
 
-  // Requested voice may no longer exist (deleted); fallback to first available
+  // Requested voice may no longer exist (deleted); fall back to first available
   const resolvedVoiceId =
     initialValues?.voiceId &&
     allVoices.some((v) => v.id === initialValues.voiceId)
@@ -52,4 +54,4 @@ export function TextToSpeechView({
       </TextToSpeechForm>
     </TTSVoicesProvider>
   );
-}
+};
