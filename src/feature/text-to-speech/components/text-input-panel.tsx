@@ -45,7 +45,7 @@ export function TextInputPanel() {
             className="w-full "
             disabled={isSubmitting}
             isSubmitting={isSubmitting}
-            onSubmit={() => form.handleSubmit}
+            onSubmit={form.handleSubmit}
           />
         </div>
         {/* Desktop layout */}
@@ -72,7 +72,7 @@ export function TextInputPanel() {
                 size="sm"
                 disabled={isSubmitting || !isValid}
                 isSubmitting={isSubmitting}
-                onSubmit={() => form.handleSubmit}
+                onSubmit={form.handleSubmit}
               />
             </div>
           </div>

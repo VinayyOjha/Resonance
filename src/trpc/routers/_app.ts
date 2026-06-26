@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { baseProcedure, createTRPCRouter } from "../init";
 import { voicesRouter } from "./voices";
+import { generationsRouter } from "./routers";
 
 export const appRouter = createTRPCRouter({
     health: baseProcedure
@@ -11,6 +12,7 @@ export const appRouter = createTRPCRouter({
             }
         }),
     voices: voicesRouter,
+    generations: generationsRouter,
 });
 
 export type AppRouter = typeof appRouter;
