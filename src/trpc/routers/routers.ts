@@ -107,7 +107,7 @@ export const generationsRouter = createTRPCRouter({
                 // had the response from modal not been of 'audio/wav' format - const data = await response.json()
                 parseAs: "arrayBuffer",
             });
-            
+
             if (error) {
                 throw new TRPCError({
                     code: "INTERNAL_SERVER_ERROR",
@@ -135,12 +135,12 @@ export const generationsRouter = createTRPCRouter({
                 });
 
                 generationId = generation.id;
-                
+
                 // The format in which the generations will be stored in R2 is: 
                 // generations/orgs/<org-id>/<generation-id>
                 r2ObjectKey = `generations/orgs/${ctx.orgId}/${generation?.id}`;
 
-                await uploadAudio({ buffer, key: r2ObjectKey});
+                await uploadAudio({ buffer, key: r2ObjectKey });
 
                 await prisma.generation.update({
                     where: { id: generation.id },
@@ -149,11 +149,11 @@ export const generationsRouter = createTRPCRouter({
 
             } catch (error) {
                 // If we have the genId -> a db record has been created
-                if (generationId){
+                if (generationId) {
                     // Following operation can be handled more elegantly using background jobs
                     await prisma.generation.delete({
                         where: { id: generationId },
-                    }).catch(()=>{});
+                    }).catch(() => { });
                 }
 
                 throw new TRPCError({
@@ -161,7 +161,7 @@ export const generationsRouter = createTRPCRouter({
                     message: "Failded to store generated audio"
                 });
 
-                if (!generationId || !r2ObjectKey){
+                if (!generationId || !r2ObjectKey) {
                     throw new TRPCError({
                         code: "INTERNAL_SERVER_ERROR",
                         message: "Failed to store generated audio",
@@ -170,5 +170,5 @@ export const generationsRouter = createTRPCRouter({
             }
 
             return { id: generationId }
-        }),  
+        }),
 })

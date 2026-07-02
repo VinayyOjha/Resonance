@@ -42,7 +42,7 @@ export function TextInputPanel() {
       </div>
 
       {/* Action bar */}
-      <div className="shrink-0 p4 lg:p-6">
+      <div className="shrink-0 p-4 lg:p-6">
         {/* Mobile layout */}
         <div className="flex flex-col gap-3 lg:hidden">
           <div className="flex items-center gap-2">
