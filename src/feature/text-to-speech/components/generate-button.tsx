@@ -13,10 +13,10 @@ interface GenerateButtonProps {
 
 export function GenerateButton({
     size,
+    className,
+    onSubmit,
     disabled,
     isSubmitting,
-    onSubmit,
-    className,
 } : GenerateButtonProps){
     return (
         <Button 
